@@ -555,5 +555,6 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.UI_NIGHT_LIGHT_DIM_WALL_AMOUNT, new InclusiveIntegerRangeValidator(1, 100));
         VALIDATORS.put(Secure.UI_NIGHT_LIGHT_DIM_WALL_ACTIVATED, BOOLEAN_VALIDATOR);
 	VALIDATORS.put(Secure.KEYBOX_DATA, ANY_STRING_VALIDATOR);
+        VALIDATORS.put(Secure.HIDE_DEVELOPER_STATUS, ANY_STRING_VALIDATOR);
     }
 }
