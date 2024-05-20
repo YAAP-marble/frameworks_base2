@@ -1693,4 +1693,11 @@
     <style name="Theme.SystemUI.Dialog.StickyKeys" parent="@style/Theme.SystemUI.Dialog">
         <item name="android:colorBackground">@color/transparent</item>
     </style>
+
+    <!-- Data usage -->
+    <style name="TextAppearance.QS.Status.DataUsage">
+        <item name="android:textColor">?attr/onSurfaceVariant</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    </style>
 </resources>
