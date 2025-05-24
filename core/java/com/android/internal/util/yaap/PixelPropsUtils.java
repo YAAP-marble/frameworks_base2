@@ -37,11 +37,8 @@ public final class PixelPropsUtils {
     private static final String PACKAGE_GMS = "com.google.android.gms";
     private static final String PROCESS_GMS_UNSTABLE = PACKAGE_GMS + ".unstable";
     private static final String VERSION_PREFIX = "VERSION.";
-    private static final String FINSKY_TARGET_RELEASE_VERSION = "12";
-    private static final int FINSKY_TARGET_SDK_INT = 32;
 
     private final HashMap<String, Object> certifiedProps;
-    private final HashMap<String, Object> finskyProps;
 
     private static volatile boolean sIsFinsky = false;
     private static volatile boolean sIsEnabled = false;
@@ -90,8 +87,7 @@ public final class PixelPropsUtils {
         tMap.put("MODEL", cert_model);
         tMap.put("PRODUCT", sections[1]);
         tMap.put("DEVICE", cert_device);
-        tMap.put(VERSION_PREFIX + "SDK_INT", FINSKY_TARGET_SDK_INT);
-        tMap.put(VERSION_PREFIX + "RELEASE", FINSKY_TARGET_RELEASE_VERSION);
+        tMap.put(VERSION_PREFIX + "RELEASE", sections[2].split(":")[1]);
         tMap.put(VERSION_PREFIX + "INCREMENTAL", sections[4].split(":")[0]);
         tMap.put(VERSION_PREFIX + "SECURITY_PATCH", cert_spl);
         tMap.put(VERSION_PREFIX + "DEVICE_INITIAL_SDK_INT", cert_sdk);
@@ -108,11 +104,6 @@ public final class PixelPropsUtils {
         if (!Build.TAGS.equals("release-keys"))
             tMap.put("TAGS", "release-keys");
         certifiedProps = new HashMap<>(tMap);
-
-        Map<String, Object> fMap = new HashMap<>();
-        fMap.put(VERSION_PREFIX + "SDK_INT", FINSKY_TARGET_SDK_INT);
-        fMap.put(VERSION_PREFIX + "RELEASE", FINSKY_TARGET_RELEASE_VERSION);
-        finskyProps = new HashMap<>(fMap);
     }
 
     public void setProps(String packageName) {
@@ -129,11 +120,7 @@ public final class PixelPropsUtils {
         }
         Logger.d("Package = " + packageName);
         sIsFinsky = packageName.equals(PACKAGE_FINSKY);
-        if (sIsFinsky) {
-            finskyProps.forEach(PixelPropsUtils::setPropValue);
-            return;
-        }
-        if (!packageName.equals(PACKAGE_GMS) ||
+        if (sIsFinsky || !packageName.equals(PACKAGE_GMS) ||
                 !PROCESS_GMS_UNSTABLE.equals(Application.getProcessName())) {
             return;
         }
@@ -164,14 +151,6 @@ public final class PixelPropsUtils {
 
     public static boolean getIsEnabled() {
         return sIsEnabled;
-    }
-
-    public static boolean shouldBypassBroadcastReceiverValidation(String packageName) {
-        // Check if the app is whitelisted
-        if (!packageName.equals(PACKAGE_FINSKY) || !getIsEnabled()) {
-            return false;
-        }
-        return true;
     }
 
     private static class Logger {
