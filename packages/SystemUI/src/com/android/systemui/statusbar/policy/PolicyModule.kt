@@ -14,6 +14,7 @@
 
 package com.android.systemui.statusbar.policy
 
+import android.content.Context
 import android.hardware.SensorPrivacyManager.Sensors.CAMERA
 import android.hardware.SensorPrivacyManager.Sensors.MICROPHONE
 import android.os.UserManager.DISALLOW_CAMERA_TOGGLE
@@ -148,6 +149,21 @@ interface PolicyModule {
         const val MIC_TOGGLE_TILE_SPEC = "mictoggle"
         const val DND_TILE_SPEC = "dnd"
         const val MODES_DND_TILE_SPEC = "modes_dnd"
+
+        @Provides
+        @IntoMap
+        @StringKey(CellularTile.TILE_SPEC)
+        fun provideCellularTileConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(CellularTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_swap_vert,
+                    labelRes = R.string.quick_settings_cellular_detail_title
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.CONNECTIVITY
+            )
+        }
 
         /** Inject DndTile or ModesTile into tileMap in QSModule based on feature flag */
         @Provides
@@ -502,6 +518,23 @@ interface PolicyModule {
                 stateInteractor,
                 mapper,
             )
+
+        @Provides
+        @IntoMap
+        @StringKey(WifiTile.TILE_SPEC)
+        fun provideWifiTileConfig(uiEventLogger: QsEventLogger, context: Context): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(WifiTile.TILE_SPEC),
+		uiConfig = QSTileUIConfig.Resource(
+                    iconRes = context.resources.getIdentifier(
+                        "ic_signal_wifi_transient_animation", "drawable", "android"
+                    ),
+                    labelRes = R.string.quick_settings_wifi_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.CONNECTIVITY
+            )
+        }
     }
 
     /** Inject FlashlightStrengthTile into tileMap in QSModule */
