@@ -61,6 +61,9 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
     private static final String CHANNEL_ID = TILE_SPEC;
     private static final int NOTIFICATION_ID = 273298;
 
+    @Nullable
+    private Icon mIcon = null;
+
     @Inject
     public PowerShareTile(
             QSHost host,
@@ -183,7 +186,11 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
             return;
         }
 
-        state.icon = ResourceIcon.get(R.drawable.ic_qs_powershare);
+        if (mIcon == null) {
+            mIcon = maybeLoadResourceIcon(
+                    R.drawable.ic_qs_powershare);
+        }
+        state.icon = mIcon;
         try {
             state.value = mPowerShare.isEnabled();
         } catch (RemoteException ex) {

@@ -54,6 +54,9 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
 
     public static final String TILE_SPEC = "heads_up";
 
+    @Nullable
+    private Icon mIcon = null;
+
     private final CustomObserver mObserver = new CustomObserver();
 
     @Inject
@@ -110,6 +113,11 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
         final boolean headsUp = value != 0;
         state.value = headsUp;
         state.label = mContext.getString(R.string.quick_settings_heads_up_label);
+        if (mIcon == null) {
+            mIcon = maybeLoadResourceIcon(
+                    R.drawable.ic_qs_heads_up);
+        }
+        state.icon = mIcon;
         if (headsUp) {
             state.icon = ResourceIcon.get(R.drawable.ic_qs_heads_up_on);
             state.contentDescription =  mContext.getString(
