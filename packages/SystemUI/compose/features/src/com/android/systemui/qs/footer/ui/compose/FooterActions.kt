@@ -322,7 +322,7 @@ fun IconButton(
             ),
         useModifierBasedImplementation = useModifierBasedExpandable,
     ) {
-        val tint = model.iconTint?.let { Color(it) } ?: Color.Unspecified
+        val tint = model.iconTint?.let { colorAttr(it) } ?: Color.Unspecified
         Icon(model.icon, tint = tint, modifier = Modifier.size(20.dp))
     }
 }
@@ -409,7 +409,7 @@ private fun TextButton(
         shape = CircleShape,
         color = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-        borderStroke = BorderStroke(1.dp, colorAttr(R.attr.shadeInactive)),
+        borderStroke = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurfaceVariant),
         modifier =
             modifier
                 .padding(horizontal = 4.dp)
@@ -424,7 +424,7 @@ private fun TextButton(
             Icon(
                 icon,
                 Modifier.padding(end = 12.dp).size(20.dp),
-                colorAttr(R.attr.onShadeInactiveVariant),
+                MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             CompatText(
@@ -437,7 +437,7 @@ private fun TextButton(
                         MaterialTheme.typography.bodyMedium
                     },
                 letterSpacing = if (QsInCompose.isEnabled) 0.em else 0.01.em,
-                color = colorAttr(R.attr.onShadeInactiveVariant),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -451,7 +451,7 @@ private fun TextButton(
                     painterResource(com.android.internal.R.drawable.ic_chevron_end),
                     contentDescription = null,
                     Modifier.padding(start = 8.dp).size(20.dp),
-                    colorAttr(R.attr.onShadeInactiveVariant),
+                    MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
