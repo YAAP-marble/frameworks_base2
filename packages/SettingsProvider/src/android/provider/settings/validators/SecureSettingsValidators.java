@@ -557,5 +557,6 @@ public class SecureSettingsValidators {
 	VALIDATORS.put(Secure.KEYBOX_DATA, ANY_STRING_VALIDATOR);
         VALIDATORS.put(Secure.HIDE_DEVELOPER_STATUS, ANY_STRING_VALIDATOR);
         VALIDATORS.put(Secure.SCREENSHOT_KEY_GESTURE_ENABLED, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(Secure.WAKE_ON_CHARGE, new InclusiveIntegerRangeValidator(0, 2));
     }
 }
