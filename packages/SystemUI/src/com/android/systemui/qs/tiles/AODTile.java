@@ -54,10 +54,6 @@ public class AODTile extends QSTileImpl<BooleanState> {
 
     public static final String TILE_SPEC = "aod";
 
-    @Nullable
-    private Icon mIcon = null;
-    private final BatteryController mBatteryController;
-
     @Inject
     public AODTile(QSHost host,
             QsEventLogger uiEventLogger,
@@ -142,11 +138,6 @@ public class AODTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleUpdateState(BooleanState state, Object arg) {
-        state.label = getTileLabel();
-        if (mIcon == null) {
-            mIcon = maybeLoadResourceIcon(
-                    R.drawable.ic_qs_aod);
-        }
         state.icon = mIcon;
         state.hasLongClickEffect = false;
         state.state = getAodState() == 0 ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE;
