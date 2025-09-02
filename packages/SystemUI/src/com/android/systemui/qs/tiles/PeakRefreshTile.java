@@ -60,6 +60,9 @@ import javax.inject.Inject;
 public class PeakRefreshTile extends QSTileImpl<BooleanState> {
     public static final String TILE_SPEC = "peak_refresh";
 
+    @Nullable
+    private Icon mIcon = null;
+
     private static final String CONFIG = "config_show_smooth_display";
     private static final String SETTINGS_PKG = "com.android.settings";
     private static final Intent SETTINGS_INTENT = new Intent(SETTINGS_PKG + ".DISPLAY_SETTINGS");
@@ -150,9 +153,13 @@ public class PeakRefreshTile extends QSTileImpl<BooleanState> {
         } else {
             enable = isEnabled();
         }
-        state.icon = maybeLoadResourceIcon(R.drawable.ic_qs_refresh_rate);
         state.value = enable;
         state.label = getTileLabel();
+        if (mIcon == null) {
+            mIcon = maybeLoadResourceIcon(
+                    R.drawable.ic_qs_refresh_rate);
+        }
+        state.icon = mIcon;
         String subtitle = mContext.getString(R.string.peak_refresh_tile_subtitle);
         if (enable) {
             subtitle = String.format(subtitle, (int) mPeakRefreshRate);

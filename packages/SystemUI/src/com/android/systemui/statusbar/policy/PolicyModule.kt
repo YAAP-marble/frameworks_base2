@@ -543,14 +543,14 @@ interface PolicyModule {
             return QSTileConfig(
                 tileSpec = TileSpec.create(CaffeineTile.TILE_SPEC),
                 uiConfig = QSTileUIConfig.Resource(
-                    iconRes = R.drawable.ic_qs_caffeine,
+                    iconRes = R.drawable.ic_qs_caffeine_on,
                     labelRes = R.string.quick_settings_caffeine_label
                 ),
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.DISPLAY
             )
         }
-   
+
         @Provides
         @IntoMap
         @StringKey(HeadsUpTile.TILE_SPEC)
@@ -558,7 +558,7 @@ interface PolicyModule {
             return QSTileConfig(
                 tileSpec = TileSpec.create(HeadsUpTile.TILE_SPEC),
                 uiConfig = QSTileUIConfig.Resource(
-                    iconRes = R.drawable.ic_qs_heads_up,
+                    iconRes = R.drawable.ic_qs_heads_up_on,
                     labelRes = R.string.quick_settings_heads_up_label
                 ),
                 instanceId = uiEventLogger.getNewInstanceId(),
@@ -611,21 +611,35 @@ interface PolicyModule {
             )
         }
 
-        @Provides
-        @IntoMap
-        @StringKey(DataSwitchTile.TILE_SPEC)
-        fun provideDataSwitchTile(uiEventLogger: QsEventLogger): QSTileConfig {
-            return QSTileConfig(
-                tileSpec = TileSpec.create(DataSwitchTile.TILE_SPEC),
-                uiConfig = QSTileUIConfig.Resource(
-                    iconRes = R.drawable.ic_qs_data_switch_0,
-                    labelRes = R.string.qs_data_switch_label
-                ),
-                instanceId = uiEventLogger.getNewInstanceId(),
-                category = TileCategory.CONNECTIVITY
-            )
-        }
+         @Provides
+         @IntoMap
+         @StringKey(GamingModeTile.TILE_SPEC)
+         fun provideGamingModeTile(uiEventLogger: QsEventLogger): QSTileConfig {
+             return QSTileConfig(
+                 tileSpec = TileSpec.create(GamingModeTile.TILE_SPEC),
+                 uiConfig = QSTileUIConfig.Resource(
+                     iconRes = R.drawable.ic_qs_gaming_mode,
+                     labelRes = R.string.gaming_mode_tile_title
+                 ),
+                 instanceId = uiEventLogger.getNewInstanceId(),
+                 category = TileCategory.UTILITIES
+             )
+         }
 
+         @Provides
+         @IntoMap
+         @StringKey(PeakRefreshTile.TILE_SPEC)
+         fun providePeakRefreshTile(uiEventLogger: QsEventLogger): QSTileConfig {
+             return QSTileConfig(
+                 tileSpec = TileSpec.create(PeakRefreshTile.TILE_SPEC),
+                 uiConfig = QSTileUIConfig.Resource(
+                     iconRes = R.drawable.ic_qs_refresh_rate,
+                     labelRes = R.string.peak_refresh_tile_title
+                 ),
+                 instanceId = uiEventLogger.getNewInstanceId(),
+                 category = TileCategory.DISPLAY
+             )
+         }
     }
 
     /** Inject FlashlightStrengthTile into tileMap in QSModule */

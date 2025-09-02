@@ -320,5 +320,20 @@ interface ConnectivityModule {
                 category = TileCategory.CONNECTIVITY
             )
         }
+
+        @Provides
+        @IntoMap
+        @StringKey(DataSwitchTile.TILE_SPEC)
+        fun provideDataSwitchTile(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(DataSwitchTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_data_switch_1,
+                    labelRes = R.string.qs_data_switch_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.CONNECTIVITY
+            )
+        }
     }
 }

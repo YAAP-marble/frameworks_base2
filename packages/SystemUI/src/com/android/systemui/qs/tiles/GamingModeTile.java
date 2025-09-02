@@ -58,7 +58,9 @@ public class GamingModeTile extends QSTileImpl<BooleanState> {
     private static final String KEY_DIALOG_SHOWN = "gaming_mode_dialog_shown";
     private static final Intent SETTINGS_INTENT = new Intent("com.android.settings.GAMING_MODE_SETTINGS");
 
-    private final Icon mIcon = ResourceIcon.get(R.drawable.ic_qs_gaming_mode);
+    @Nullable
+    private Icon mIcon = null;
+
     private final CustomObserver mObserver = new CustomObserver();
     private final SharedPreferences mPrefs;
 
@@ -116,9 +118,13 @@ public class GamingModeTile extends QSTileImpl<BooleanState> {
         } else {
             enable = isEnabled();
         }
-        state.icon = mIcon;
         state.value = enable;
         state.label = mContext.getString(R.string.gaming_mode_tile_title);
+        if (mIcon == null) {
+            mIcon = maybeLoadResourceIcon(
+                    R.drawable.ic_qs_gaming_mode);
+        }
+        state.icon = mIcon;
         if (enable) {
             state.contentDescription = mContext.getString(
                     R.string.accessibility_quick_settings_gaming_mode_on);

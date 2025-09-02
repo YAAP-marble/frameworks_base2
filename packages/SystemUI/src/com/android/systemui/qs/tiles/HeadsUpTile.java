@@ -115,7 +115,7 @@ public class HeadsUpTile extends QSTileImpl<BooleanState> {
         state.label = mContext.getString(R.string.quick_settings_heads_up_label);
         if (mIcon == null) {
             mIcon = maybeLoadResourceIcon(
-                    R.drawable.ic_qs_heads_up);
+                    R.drawable.ic_qs_heads_up_on);
         }
         state.icon = mIcon;
         if (headsUp) {

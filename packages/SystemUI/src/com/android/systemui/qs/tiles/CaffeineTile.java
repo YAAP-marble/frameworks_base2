@@ -231,7 +231,7 @@ public class CaffeineTile extends QSTileImpl<BooleanState> {
         state.label = mContext.getString(R.string.quick_settings_caffeine_label);
         if (mIcon == null) {
             mIcon = maybeLoadResourceIcon(
-                    R.drawable.ic_qs_caffeine);
+                    R.drawable.ic_qs_caffeine_on);
         }
         state.icon = mIcon;
         state.hasLongClickEffect = false;

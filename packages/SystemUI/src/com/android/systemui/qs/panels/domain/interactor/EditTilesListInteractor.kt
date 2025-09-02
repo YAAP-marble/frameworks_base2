@@ -41,17 +41,14 @@ constructor(
     private val customTileMap: Map<String, CustomTileConfig> = mapOf(
         "cell" to CustomTileConfig(R.drawable.ic_swap_vert, TileCategory.CONNECTIVITY),
         "wifi" to CustomTileConfig(R.drawable.ic_qs_category_connectivty, TileCategory.CONNECTIVITY),
-        "vpn" to CustomTileConfig(R.drawable.ic_qs_vpn, TileCategory.CONNECTIVITY),
         "usb_tether" to CustomTileConfig(R.drawable.ic_qs_usb_tether, TileCategory.CONNECTIVITY),
-        "sync" to CustomTileConfig(R.drawable.ic_qs_sync, TileCategory.CONNECTIVITY),
         "nfc" to CustomTileConfig(R.drawable.ic_qs_nfc, TileCategory.CONNECTIVITY),
         "aod" to CustomTileConfig(R.drawable.ic_qs_aod, TileCategory.UTILITIES),
-        "caffeine" to CustomTileConfig(R.drawable.ic_qs_caffeine, TileCategory.UTILITIES),
+        "caffeine" to CustomTileConfig(R.drawable.ic_qs_caffeine_on, TileCategory.UTILITIES),
         "powershare" to CustomTileConfig(R.drawable.ic_qs_powershare, TileCategory.UTILITIES),
-        "profiles" to CustomTileConfig(R.drawable.ic_qs_profiles, TileCategory.UTILITIES),
-        "ambient_display" to CustomTileConfig(R.drawable.ic_qs_ambient_display, TileCategory.DISPLAY),
-        "heads_up" to CustomTileConfig(R.drawable.ic_qs_heads_up, TileCategory.DISPLAY),
-        "reading_mode" to CustomTileConfig(R.drawable.ic_qs_reader, TileCategory.DISPLAY),
+        "heads_up" to CustomTileConfig(R.drawable.ic_qs_heads_up_on, TileCategory.DISPLAY),
+        "gaming" to CustomTileConfig(R.drawable.ic_qs_gaming_mode, TileCategory.UTILITIES),
+        "peak_refresh" to CustomTileConfig(R.drawable.ic_qs_refresh_rate, TileCategory.DISPLAY),
         "dns" to CustomTileConfig(R.drawable.ic_settings_dns, TileCategory.CONNECTIVITY)
     )
 
