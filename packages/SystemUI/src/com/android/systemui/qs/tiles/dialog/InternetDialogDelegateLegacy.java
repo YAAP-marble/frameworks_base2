@@ -487,7 +487,7 @@ public class InternetDialogDelegateLegacy implements
             }
         });
         mMobileNetworkLayout.setOnLongClickListener(v -> {
-            mInternetDetailsContentController.launchMobileNetworkSettings(v);
+            mInternetDetailsContentController.launchMobileNetworkSettings(v, mDefaultDataSubId);
             return true;
         });
         mConnectedWifListLayout.setOnClickListener(this::onClickConnectedWifi);
