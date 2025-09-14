@@ -128,6 +128,7 @@ public class SystemSettings {
                 Settings.System.CV_ENABLED,
                 Settings.System.OMNI_ADVANCED_REBOOT,
                 Settings.System.LOCKSCREEN_BATTERY_INFO,
+                Settings.System.LOCKSCREEN_CHARGING_TIME,
                 Settings.System.NETWORK_TRAFFIC_STATE,
                 Settings.System.NETWORK_TRAFFIC_TYPE,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD,

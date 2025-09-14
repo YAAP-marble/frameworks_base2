@@ -279,6 +279,7 @@ public class SystemSettingsValidators {
                 new InclusiveIntegerRangeValidator(0, 1));
         VALIDATORS.put(System.OMNI_ADVANCED_REBOOT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.LOCKSCREEN_BATTERY_INFO, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.LOCKSCREEN_CHARGING_TIME, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.NETWORK_TRAFFIC_STATE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.NETWORK_TRAFFIC_TYPE, new InclusiveIntegerRangeValidator(0, 4));
         VALIDATORS.put(System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, ANY_INTEGER_VALIDATOR);
